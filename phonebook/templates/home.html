@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Contact details</title>
+   <style type=text/css> 
+         .leftdiv { 
+            float: left; 
+            background-color:purple;
+            height: 1000px;
+         } 
+         .middlediv { 
+            float: left; 
+            background-color:purple;
+            height: 1000px; 
+         } 
+         .rightdiv { 
+            float: left; 
+            background-color:purple;
+            height: 1000px; 
+         }
+         .textboxstyle{
+            margin: 0 auto;
+            width: 250px;
+            padding: 10px 20px 10px 20px;  
+         }
+         div{ 
+         padding : 1%; 
+         color: white;  
+         width: 30%; 
+         border: solid black; 
+         } 
+         body{
+            background-image:url("C:/Users/oneteam-sree/Desktop/Images/bgimg.jpg");
+         }
+      </style> 
+</head>
+<body>
+   <form method="post" action="Home1">
+      {% csrf_token %}
+      <div class="leftdiv">
+         <h2 style="text-align: center;">Welcome</h2>
+         <h1 style="text-align: center;">Add Contact</h1>
+         <div class="textboxstyle">
+         <input type="text" name="name" placeholder="Enter your name here" style="width: 98%;"><br> 
+         <input type="text" name="phno" placeholder="Enter your phone number here" style="width: 98%;"><br>
+         <input type="submit" value="Add Contact" name="opr">
+         </div>
+         <p>
+            {{msg1}}<br>
+            {{msg2}}
+
+         </p>
+         <table border = "1" cellpadding = "5" cellspacing = "5">
+            <tr>
+               <th>Id</th>
+               <th>Name</th>
+               <th>Phone No</th>   
+            </tr>
+            {% for i in obj %}
+            <tr>
+               <td>
+                  {{i.id}}
+               </td>
+               <td>
+                  {{i.name}}
+               
+               </td>
+               <td>
+                  {{i.phone_no}}
+               </td>
+            </tr>
+            {% endfor %}
+         </table>  
+      </div>
+   </form>
+
+   <form method="post" action="Home2">
+      {% csrf_token %}
+
+      <div class="middlediv">
+         <h1 style="text-align: center;">Update Contacts</h1>
+         <div class="textboxstyle">
+            Enter Old Name:<input type="text" name="oldname" placeholder="enter your oldname here" style="width: 98%;"><br> <br>
+            Enter New Name:<input type="text" name="newname" placeholder="enter your newname here" style="width: 98%;"><br> <br>
+            <input type="submit" value="Update Name" name="opr">
+
+            {{msg4}}
+         </div> <br>
+         <div class="textboxstyle">  
+            Enter Name:<input type="text" name="name" placeholder="Enter your name here" style="width: 98%;"><br> <br>
+            Enter New number:<input type="text" name="phoneno" placeholder="Enter your new phone number here" style="width: 98%;"><br><br>
+            <input type="submit" value="Update Phone Number" name="opr">  
+         </div>
+         <p>
+            {{msg3}}
+         </p>  
+      </div>
+   </form>
+
+   <form method="post" action="Home3">
+      {% csrf_token %}
+
+      <div class="rightdiv">
+         <h1 style="text-align: center;">Contact Details</h1>
+         <div class="textboxstyle">
+            <table border = "1" cellpadding = "5" cellspacing = "5">
+               <tr>
+                  <th>Name</th>
+                  <th>PhoneNo</th>   
+               </tr>
+               {% for i in obj1 %}
+               <tr>
+                  <td>
+                     {{i.name}}
+                  </td>
+                  <td>
+                     {{i.phone_no}}
+                  </td>
+               </tr>
+               {% endfor %}
+            </table>
+
+         <input type="submit" name="view" value="View All">
+         </div>  
+      </div>
+   </form>
+
+   <form method="post" action="/Login/">
+      {%csrf_token%}  
+
+      <input type="submit" value="LogOut">
+
+
+   </form>
+
+<a href="{% url 'home'%}" >Back</a>
+</body>
+</html>

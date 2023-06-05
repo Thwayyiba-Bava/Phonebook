@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<style type=text/css> 
+         ./*leftdiv 
+         { 
+         float: left; 
+         background-color:gray;
+         height: 500px;
+         }*/ 
+/*          .textboxstyle{
+            margin: 0 auto;
+            width: 250px;
+            }*/
+
+         /*div{ 
+         padding : 1%; 
+         color: white; 
+         background-color: 009900; 
+         width: 40%; 
+         border: solid black; 
+         }*/
+        .modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+	<!-- <div style="background-image: url('');"> -->
+
+<div style="text-align:center"><h2>Login</h2></div>
+<div style="text-align:center">
+  <form method="post" action="">
+    {% csrf_token %}
+      		<b>UserName:</b>
+      <input type="text" name="username" value="{{key1}}"><br><br>
+      <b>Password:</b>&nbsp;
+   			<input type="Password" name="pwd" ><br><br>
+   			<div style="align-items:center;">
+   		    <button type="submit" name="btn" value="Login">Login</button>
+    <button type="submit" name="btn" value="SignUp">SignUp</button></div><br>
+    <div>
+    
+	<span href="" id="forgot" onclick="" >Forgot Password?</span>
+
+    </div>
+
+
+  </div>
+<!-- </div> -->
+</form>
+    <div class="modal" id="forgotpass">
+    	<form action="../Send/" method="post">
+    		{%csrf_token%}
+    	<div class="modal-content">
+    		<span class="close">
+    			&times;
+    		</span>
+    		<input type="text" name="email">
+    		<input type="submit" name="send" value="snd">
+    		
+    	</div>
+	
+
+
+
+    	</form>
+    	    </div>
+
+    <!-- <dialog id="dlgbox">Reset Password</dialog> -->
+
+</div>
+
+    <!-- <a href="Forgot Password?"></a> -->
+      <p>
+	
+{{errmsg}}
+{{msg3}}
+</p>
+
+
+
+<script type="text/javascript">
+var modal = document.getElementById("forgotpass");
+
+// Get the button that opens the modal
+var btn = document.getElementById("forgot");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+	function display()
+	{
+		document.getElementById("forgotpass").style.display="block";
+	}
+	span.onclick(display())
+</script>
+ 
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sign up</title>
+</head>
+<body>
+<div style="text-align:center"><h2>Login</h2></div>
+<div style="text-align:center">
+<form method="post"  action="/SignUp/">
+    {% csrf_token %}
+    <b>UserName:</b>
+    <input type="text" name="uname"><br><br>
+
+    <b>First Name:</b>
+    <input type="text" name="fname"><br><br>
+
+    <b>Last Name:</b>
+    <input type="text" name="lname"><br><br>
+
+    <b>Email:</b>
+    <input type="text" name="email"><br><br>  
+
+    <b>Password:</b>&nbsp;
+   	<input type="Password" name="pwd" ><br><br>
+
+   	<b> Confirm Password:</b>&nbsp;
+   	<input type="Password" name="pwd1" ><br><br>
+    <button type="submit">SignUp</button>
+</div>
+</form>
+<p>
+	
+{{errmsg}}
+{{msg3}}
+
+</p>
+    
+
+
+</body>
+</html>
